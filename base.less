@@ -1,0 +1,64 @@
+.generate-margin(@i) {
+  m@{i} {margin: @i * 1px}
+  mt@{i} {margin-top: @i * 1px}
+  mr@{i} {margin-right: @i * 1px}
+  mb@{i} {margin-bottom: @i * 1px}
+  ml@{i} {margin-left: @i * 1px}
+}
+
+.generate-margins(@n, @i: 1) when (@i =< @n) {
+  .generate-margin(@i);
+  .generate-margins(@n, (@i + 1));
+}
+
+/* margins from 1 - 10px*/
+.generate-margins(10);
+.generate-margin(15);
+.generate-margin(20);
+
+.generate-padding(@i) {
+  p@{i} {padding: @i * 1px}
+  pt@{i} {padding-top: @i * 1px}
+  pr@{i} {padding-right: @i * 1px}
+  pb@{i} {padding-bottom: @i * 1px}
+  pl@{i} {padding-left: @i * 1px}
+}
+
+.generate-paddings(@n, @i: 1) when (@i =< @n) {
+  .generate-padding(@i);
+  .generate-paddings(@n, (@i + 1));
+}
+
+/* paddings from 1 - 10px */
+.generate-paddings(10);
+.generate-padding(15);
+.generate-padding(20);
+
+/* float */
+.right {float: right}
+.left {float: left}
+.clear {clear: both}
+
+/* effects */
+.round {
+  .border-radius(100%);
+}
+
+/* css3 mixins */
+.border-radius (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius:    @radius;
+  border-radius:         @radius;
+
+  -moz-background-clip:    padding;
+  -webkit-background-clip: padding-box;
+  background-clip:         padding-box;
+}
+
+.hide {
+  display: none;
+}
+
+.center {
+  margin: 0 auto;
+}
